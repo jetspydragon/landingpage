@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cactus Byte Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav>
+      <div class="logo">Cactus Byte Studio</div>
+      <div class="lang-selector">
+        <button id="lang-toggle"></button>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <div></div><div></div><div></div>
+      </div>
+      <ul id="nav-links">
+        <li data-lang="es"><a href="#inicio">Inicio</a></li>
+        <li data-lang="en"><a href="#inicio">Home</a></li>
+        
+        <!--
+        <li data-lang="es"><a href="#sobre">Sobre</a></li>
+        <li data-lang="en"><a href="#sobre">About</a></li>
+        -->
+
+        <li data-lang="es"><a href="#juegos">Juegos</a></li>
+        <li data-lang="en"><a href="#juegos">Games</a></li>
+        
+        <!--
+        <li><a href="#trailer">Trailer</a></li>
+        <li><a href="#trailer">Trailer</a></li>
+        
+        <li data-lang="es"><a href="#contacto">Contacto</a></li>
+        <li data-lang="en"><a href="#contacto">Contact</a></li>
+        -->
+      </ul>
+    </nav>
+
+    <section id="inicio" class="hero">
+      <img src="images/logo.png" alt="Logo Cactus Byte Studio">
+      <h1>Cactus Byte Studio</h1>
+      <p data-lang="en">Indie games, music and art 🌵💛</p>
+      <p data-lang="es">Videojuegos indie, música y arte 🌵💛</p>
+
+      <div class="inline-buttons">
+        <a data-lang="es" href="#juegos" class="btn">Juegos</a>
+        <a data-lang="en" href="#juegos" class="btn">Games</a>
+
+        <a href="/blog" class="btn">Blog</a>
+      </div>
+    </section>
+
+    <!--
+    <section id="sobre">
+      <h2>Sobre nosotros</h2>
+      <p>Somos un estudio indie que crea juegos web con estilo único y arte vectorial.</p>
+    </section>
+    -->
+
+    <section id="juegos">
+      <h2 data-lang="es">Nuestros juegos</h2>
+      <h2 data-lang="en">Our games</h2>
+
+      <div class="cards">
+        <div class="card" data-title="Batalla Elemental" 
+                          data-description="..." 
+                          data-screenshots="s1.png,s2.png">
+          <img src="juego1.png" alt="">
+          <h3>Batalla Elemental</h3>
+          <p>Aplicación de soporte al juego de cartas Batalla Elemental.</p>
+          <button class="btn" disabled>Ver</button>
+        </div>
+      </div>
+    </section>
+
+    <!--
+    <section id="trailer">
+      <h2>Trailer</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Escribinos o seguinos en redes</p>
+      <a href="mailto:hola@cactusbytestudio.com" class="btn">Email</a>
+    </section>
+    -->
+
+    <footer>
+      <p>&copy; 2025 Cactus Byte Studio</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="game-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-title">Título del juego</h2>
+        <div class="modal-body">
+          <!-- El contenido real se genera dinámicamente desde JS -->
+        </div>
+      </div>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/lang.js"></script>
+    <script src="js/popup.js"></script>
+  </body>
+</html>

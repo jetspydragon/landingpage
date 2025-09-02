@@ -1,0 +1,230 @@
+/* Reset y básicos */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family:'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    color:#333;
+    background:#fff8e1;
+}
+
+/* NAV */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #ffca28;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+nav .logo { font-weight: bold; font-size: 1.2rem; color: #111; }
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+nav ul li a.active { background: #43a047; color: #fff; }
+nav ul li a:hover { background: #ffd54f; }
+
+/* HAMBURGER */
+.hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+.hamburger div { width: 25px; height: 3px; background: #111; transition: all 0.3s ease; }
+
+/* SECCIONES */
+section {
+    padding: 6rem 2rem;
+    min-height:100vh;
+    text-align:center;
+}
+
+.hero {
+    background: #43a047;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero img { width:200px; margin-bottom:2rem; max-width:90%; height:auto; }
+
+.btn {
+    display:inline-block;
+    padding:1rem 2rem;
+    background:#ffca28;
+    color:#111;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:700;
+    transition:0.3s;
+    margin-top:1rem;
+}
+
+.btn:hover { background:#ffd54f; }
+
+/* Botones deshabilitados */
+.btn[disabled] {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;  /* ← aquí el cursor cambia a “prohibido” */
+  opacity: 0.6;
+  pointer-events: none; /* evita clics */
+}
+
+.inline-buttons {
+  display: flex;
+  gap: 12px; /* espacio entre botones */
+  flex-wrap: wrap; /* opcional: permite que bajen a otra línea en pantallas chicas */
+}
+
+.inline-buttons .btn {
+  flex: none; /* evita que se estiren */
+}
+
+.cards {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:2rem;
+    margin-top:2rem;
+}
+
+.card {
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    padding:1rem;
+    width:220px;
+}
+
+.card img { width:100%; height:auto; border-radius:12px; }
+
+iframe { max-width:100%; }
+
+footer { background:#ffca28; padding:2rem; margin-top:2rem; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+nav ul {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 200px;
+    height: calc(100vh - 60px);
+    background: #ffca28;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    transition: right 0.3s ease;
+}
+nav ul.show { right: 0; }
+
+.hamburger { display: flex; }
+
+section { padding: 4rem 1rem; }
+
+.hero img { width:150px; }
+
+.cards { flex-direction: column; gap:1rem; align-items:center; }
+.card { width:100%; max-width:300px; }
+
+.btn { width:80%; max-width:250px; }
+}
+
+.lang-selector {
+    margin-left: 1rem;
+}
+
+#lang-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.2rem;
+    border-radius: 6px;
+}
+#lang-toggle svg { display: block; width: 24px; height: 16px; }
+
+#lang-toggle:hover {
+    background: #66bb6a;
+}
+
+/* Modal overlay */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal content */
+.modal-content {
+    background: #fff8e1;
+    margin: auto;
+    padding: 1rem;
+    border-radius: 16px;
+    max-width: 900px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s;
+}
+
+/* Close button */
+.close {
+    align-self: flex-end;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Body */
+.modal-body {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    min-height: 50vh;
+}
+
+/* Columnas */
+.left, .right { flex: 1; }
+.left img { width: 100%; margin-bottom: 0.5rem; border-radius: 12px; }
+.right { display: flex; flex-direction: column; gap: 0.5rem; }
+
+/* Descripción scrollable */
+.desc { flex: 2; overflow-y: auto; max-height: 200px; padding: 0.5rem; background: #fff; border-radius: 8px; }
+
+/* Plataformas */
+.platforms { display: flex; gap: 0.5rem; justify-content: start; font-size: 1.5rem; }
+
+/* Botones */
+.buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.buttons .btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
+
+/* Animación */
+@keyframes fadeIn { from {opacity:0} to {opacity:1} }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-body { flex-direction: column; }
+    .desc { max-height: 150px; }
+}

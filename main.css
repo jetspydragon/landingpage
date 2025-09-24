@@ -143,7 +143,10 @@ section { padding: 4rem 1rem; }
 .cards { flex-direction: column; gap:1rem; align-items:center; }
 .card { width:100%; max-width:300px; }
 
-.btn { width:80%; max-width:250px; }
+.btn { 
+    width:80%; 
+    max-width:250px; 
+}
 }
 
 .lang-selector {
@@ -203,11 +206,32 @@ section { padding: 4rem 1rem; }
     gap: 1rem;
     margin-top: 1rem;
     min-height: 50vh;
+    align-items: flex-start; /* para alinear la parte superior */
 }
 
 /* Columnas */
+.left {
+    display: flex;           /* pone todas las imágenes en fila */
+    gap: 10px;               /* espacio entre imágenes */
+    overflow-x: auto;        /* agrega scroll horizontal si es necesario */
+    overflow-y: hidden; /* evita scroll vertical */
+    padding: 5px;            /* opcional, para que no queden pegadas al borde */
+    max-width: 100%;         /* evita que se salga del contenedor */
+    scrollbar-width: thin; /* para Firefox */
+}
 .left, .right { flex: 1; }
-.left img { width: 100%; margin-bottom: 0.5rem; border-radius: 12px; }
+.left img { 
+    max-height: 300px; /* altura máxima */
+    width: auto;        /* ancho se ajusta según proporción */
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem; 
+    border-radius: 12px; 
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+.left img:hover {
+  transform: scale(1.05); /* pequeño zoom al pasar el mouse */
+}
 .right { display: flex; flex-direction: column; gap: 0.5rem; }
 
 /* Descripción scrollable */
@@ -227,4 +251,10 @@ section { padding: 4rem 1rem; }
 @media (max-width: 768px) {
     .modal-body { flex-direction: column; }
     .desc { max-height: 150px; }
+}
+
+img.logo {
+    width: auto;   /* igual que el tamaño del texto */
+    height: 1em;  /* mantiene proporción cuadrada */
+    fill: currentColor; /* toma el color del texto */
 }

@@ -3,6 +3,21 @@ const modalTitle = document.getElementById('modal-title');
 const modalBody = document.querySelector('.modal-body');
 const modalClose = document.querySelector('.modal .close');
 
+const cards = {
+    "batalla-elemental": {
+        title: "Batalla Elemental",
+        description: "Aplicación de soporte para el juego de cartas coleccionables Batalla Elemental, basado en el universo de Las Crónicas de Reaper. Fusiona ⚔️ elementos estratégicos clásicos con la ⭐ evolución de personajes en estilos modernos.",
+        screenshots: "batalla-elemental1.png,batalla-elemental2.png,batalla-elemental3.png",
+        links: [
+            {
+                label: "itch.io",
+                img: "logos/itchio.svg",
+                url: "https://cactusbytestudio.itch.io/batalla-elemental",
+            },
+        ],
+    },
+};
+
 document.querySelectorAll('.card .btn').forEach(btn => {
     btn.addEventListener('click', e => {
         e.preventDefault(); // evita que el scroll se vaya arriba
@@ -10,27 +25,38 @@ document.querySelectorAll('.card .btn').forEach(btn => {
         const card = btn.closest('.card');
         
         // Tomar datos de la tarjeta
-        const title = card.dataset.title;
-        const description = card.dataset.description;
-        const screenshots = card.dataset.screenshots ? card.dataset.screenshots.split(',') : [];
+        const id = card.dataset.id;
+        const cardData = cards[id];
+        const screenshots = cardData.screenshots ? cardData.screenshots.split(',') : [];
+        const links = cardData.links ? cardData.links : [];
         
         // Poner título
-        modalTitle.textContent = title;
+        modalTitle.textContent = cardData.title;
         
         // Construir contenido dinámicamente
-        modalBody.innerHTML = `
+        let innerHTML = "";
+        innerHTML = `
         <div class="left">
-            ${screenshots.map(s => `<img src="${s}" alt="Screenshot">`).join('')}
+            ${screenshots.map(s => `<img class="screenshot" src="images/screenshots/${s}" alt="Screenshot">`).join('')}
         </div>
         <div class="right">
-            <div class="desc"><p>${description}</p></div>
-            <div class="platforms">🖥️ 🎮</div>
+            <div class="desc">
+                <p>${cardData.description}</p>
+            </div>
             <div class="buttons">
-            <a href="#" class="btn">Jugar</a>
-            <a href="#" class="btn">Steam</a>
+        `;
+        links.forEach(element => {
+            innerHTML += `
+            <a href="${element.url}" target="_blank" class="btn">
+                <img class="logo" src="images/${element.img}" alt="${element.label}"> ${element.label}
+            </a>`;
+        });
+        innerHTML += `
             </div>
         </div>
         `;
+
+        modalBody.innerHTML = innerHTML;
         
         modal.style.display = 'flex';
     });
